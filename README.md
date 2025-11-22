@@ -9,14 +9,13 @@ BookTrack is an application that allows usersd to create, read, update, and dele
 - Price
 
 ### User Access
-
 User access is divided into public visitors and logged-in users.
 
-Public user access:
+**Public user access:**
 - View website pages
 - View book list with no CRUD capabilities
 
-Logged-In Users:
+**Logged-In Users:**
 - View website pages
 - Register/login
 - View book list with CRUD capabilities
@@ -25,10 +24,7 @@ Logged-In Users:
     - Delete existing books
 
 ### Languages
-
 Built using **Node.js**, **Express**, **EJS**, **HTML**, **CSS**, and **MongoDB**.
-
----
 
 ## External Code
 - Lectures
@@ -38,4 +34,4 @@ Built using **Node.js**, **Express**, **EJS**, **HTML**, **CSS**, and **MongoDB*
 - Passport.js
 
 ## .env
-The `.env` file is not committed to the repository as it contains the MongoDB connection string. Used .`gitignore`.
+The `.env` file is not committed to the repository as it contains the MongoDB connection string. Used `.gitignore`.
