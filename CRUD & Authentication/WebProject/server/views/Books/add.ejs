@@ -4,9 +4,11 @@
 <main class="container mt-4">
   <h1 class="mb-3">Add Book</h1>
 
-  <% if (error) { %>
+  <% // Show only if error message was passed %>
+  <% if (typeof error !== 'undefined' && error) { %>
     <div class="alert alert-danger"><%= error %></div>
   <% } %>
+
 
   <form action="/books/add" method="post" class="card card-body">
     <div class="mb-3">
