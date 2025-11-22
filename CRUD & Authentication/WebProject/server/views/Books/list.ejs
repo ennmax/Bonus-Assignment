@@ -9,9 +9,11 @@
     <% } %>
   </div>
 
-  <% if (error) { %>
+  <% // Show alert only if error message was passed %>
+  <% if (typeof error !== 'undefined' && error) { %>
     <div class="alert alert-danger"><%= error %></div>
   <% } %>
+
 
   <div class="table-responsive">
     <table class="table table-striped table-hover align-middle">
