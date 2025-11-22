@@ -30,7 +30,7 @@ User access is divided into public visitors and logged-in users.
 Built using:
 - JavaScript
 - HTML
-- CSS
+- CSS (custom)
 - EJS (templating)
 
 ## External Code
