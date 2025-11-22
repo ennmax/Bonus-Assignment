@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
-
 var User = require('../model/user').User;
 
 function getDisplayName(req) {
@@ -16,40 +15,36 @@ router.get('/', function (req, res, next) {
   });
 });
 
-router.get('/home', function (req, res, next) {
-  res.redirect('/');
-});
-
-// Simple pages
+// About
 router.get('/about', function (req, res, next) {
-  res.render('index', { title: 'About us', displayName: getDisplayName(req) });
+  res.render('about', {
+    title: 'About',
+    displayName: getDisplayName(req)
+  });
 });
 
-router.get('/products', function (req, res, next) {
-  res.render('index', { title: 'Products', displayName: getDisplayName(req) });
-});
-
-router.get('/services', function (req, res, next) {
-  res.render('index', { title: 'Services', displayName: getDisplayName(req) });
-});
-
+// Contact
 router.get('/contact', function (req, res, next) {
-  res.render('index', { title: 'Contact us', displayName: getDisplayName(req) });
+  res.render('contact', {
+    title: 'Contact',
+    displayName: getDisplayName(req)
+  });
 });
 
-// Login (GET)
+// Login - GET
 router.get('/login', function (req, res, next) {
   if (!req.user) {
     res.render('auth/login', {
       title: 'Login',
-      message: req.flash('loginMessage')
+      message: req.flash('loginMessage'),
+      displayName: getDisplayName(req)
     });
   } else {
     res.redirect('/');
   }
 });
 
-// Login (POST)
+// Login - POST
 router.post('/login', function (req, res, next) {
   passport.authenticate('local', function (err, user, info) {
     if (err) {
@@ -68,19 +63,20 @@ router.post('/login', function (req, res, next) {
   })(req, res, next);
 });
 
-// Register (GET)
+// Register - GET
 router.get('/register', function (req, res, next) {
   if (!req.user) {
     res.render('auth/register', {
       title: 'Register',
-      message: req.flash('registerMessage')
+      message: req.flash('registerMessage'),
+      displayName: getDisplayName(req)
     });
   } else {
     res.redirect('/');
   }
 });
 
-// Register (POST)
+// Register - POST
 router.post('/register', function (req, res, next) {
   var newUser = new User({
     username: req.body.username,
@@ -90,13 +86,14 @@ router.post('/register', function (req, res, next) {
 
   User.register(newUser, req.body.password, function (err) {
     if (err) {
-      console.log('Error inserting the new user');
+      console.log('Error inserting new user');
       if (err.name === 'UserExistsError') {
         req.flash('registerMessage', 'Registration Error: User already exists');
       }
       return res.render('auth/register', {
         title: 'Register',
-        message: req.flash('registerMessage')
+        message: req.flash('registerMessage'),
+        displayName: getDisplayName(req)
       });
     }
 
