@@ -1,0 +1,9 @@
+/* Basic custom styles */
+
+main.container {
+  min-height: 60vh;
+}
+
+table.table tbody tr:hover {
+  background-color: #f8f9fa;
+}
