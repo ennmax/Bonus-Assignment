@@ -1,5 +1,19 @@
 <%- include ./partials/header.ejs %>
 <%- include ./partials/main_nav.ejs %>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %> page</p>
+
+<main class="container mt-4">
+  <h1 class="mb-3">BookTrack</h1>
+  <p class="lead">
+    An application to manage a list of books with
+    CRUD and user authentication.
+  </p>
+
+  <div class="mb-3">
+    <a href="/books" class="btn btn-primary me-2">View Books</a>
+    <% if (!displayName) { %>
+      <a href="/register" class="btn btn-outline-secondary">Register</a>
+    <% } %>
+  </div>
+</main>
+
 <%- include ./partials/footer.ejs %>
