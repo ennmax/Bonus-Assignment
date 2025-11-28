@@ -103,6 +103,44 @@ router.post('/register', function (req, res, next) {
   });
 });
 
+// Google OAuth login
+router.get(
+  '/auth/google',
+  passport.authenticate('google', { scope: ['profile', 'email'] })
+);
+
+// Google OAuth callback
+router.get(
+  '/auth/google/callback',
+  passport.authenticate('google', {
+    failureRedirect: '/login',
+    failureFlash: true
+  }),
+  function (req, res) {
+    // Successful authentication, redirect to books list
+    res.redirect('/books');
+  }
+);
+
+// GitHub OAuth login
+router.get(
+  '/auth/github',
+  passport.authenticate('github', { scope: ['user:email'] })
+);
+
+// GitHub OAuth callback
+router.get(
+  '/auth/github/callback',
+  passport.authenticate('github', {
+    failureRedirect: '/login',
+    failureFlash: true
+  }),
+  function (req, res) {
+    // Successful authentication, redirect to books list
+    res.redirect('/books');
+  }
+);
+
 // Logout
 router.get('/logout', function (req, res, next) {
   req.logout(function (err) {
