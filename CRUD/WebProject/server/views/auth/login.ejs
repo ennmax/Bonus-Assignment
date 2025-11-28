@@ -21,7 +21,20 @@
           <input type="password" class="form-control" id="password" name="password" required />
         </div>
 
-        
+      <form action="/login" method="post" class="card card-body">
+        <!-- existing username password inputs here -->
+        ...
+      </form>
+
+      <hr />
+
+      <p class="text-center mt-3">Or sign in with</p>
+
+      <div class="d-flex justify-content-center gap-2 mb-3">
+        <a href="/auth/google" class="btn btn-outline-danger">Google</a>
+        <a href="/auth/github" class="btn btn-outline-dark">GitHub</a>
+      </div>
+
         <button type="submit" class="btn btn-primary w-100">Login</button>
       </form>
 
