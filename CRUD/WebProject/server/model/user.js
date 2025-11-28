@@ -17,6 +17,15 @@ var userSchema = new mongoose.Schema(
       type: String,
       trim: true
     },
+    // IDs for social logins optional
+    googleId: {
+      type: String,
+      default: null
+    },
+    githubId: {
+      type: String,
+      default: null
+    },
     created: {
       type: Date,
       default: Date.now
@@ -31,7 +40,7 @@ var userSchema = new mongoose.Schema(
   }
 );
 
-// Add username/password fields and helper methods
+// Adds username/password fields and helper methods for local login
 userSchema.plugin(passportLocalMongoose);
 
 module.exports.User = mongoose.model('User', userSchema);
